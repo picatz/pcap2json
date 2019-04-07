@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require "pcap2json"
+require "command_lion"
+
+Signal.trap("INT") { abort }
+
+CommandLion::App.run do
+
+  name "pcap2json"
+  version Pcap2JSON::VERSION
+
+  command :file do
+    description "Read a pcap/pcapng file as JSON and print to STDOUT"
+
+    type :string
+
+    action do
+      Pcap2JSON.from_file(argument) do |packet_json|
+        puts packet_json
+        return
+      end
+    end
+  end
+  
+  command :interface do
+    description "Read packets from a given interface as JSON and print to STDOUT"
+
+    type :string
+
+    action do
+      argument = PacketGen.default_iface if argument.nil?
+      Pcap2JSON.from_interface(argument) do |packet_json|
+        puts packet_json
+      end
+    end
+  end
+
+end

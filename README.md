@@ -1,6 +1,6 @@
 # pcap2json 
 
-Command-linee application to convert packets into json.
+Command-line application to convert packets into json.
 
 ## Installation
 

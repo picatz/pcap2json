@@ -1,5 +1,3 @@
-require "pry"
-
 class PacketGen::Packet
   def to_h
     data = Hash.new

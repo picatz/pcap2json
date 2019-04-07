@@ -4,6 +4,12 @@ Command-linee application to convert packets into json.
 
 ## Installation
 
+This application depends on `libpcap`, which needs to be installed first:
+
+```console
+$ sudo apt install libpcap-dev
+```
+
 ```console
 $ gem install pcap2json
 ```
